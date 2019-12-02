@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show, :update, :destroy, :session_save, :session_get]
 
   # GET /users
   def index
@@ -36,6 +36,21 @@ class UsersController < ApplicationController
   # DELETE /users/1
   def destroy
     @user.destroy
+  end
+
+  # session_save
+  def session_save
+    @session = @user.sessions.new(key: params[:key])
+
+    if @session.save
+      render json: @session, status: :created, location: @session
+    else
+      render json: @session.errors, status: :unprocessable_entity
+    end
+  end
+
+  def session_get
+    render json: @user.sessions
   end
 
   private
