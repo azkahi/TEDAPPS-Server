@@ -60,6 +60,12 @@ class ScoresController < ApplicationController
     end
   end
 
+  def show_score
+    @scores = Score.where(score_type: params[:score_type]).where('time > 0').order(score: :desc, time: :asc)
+
+    render json: @scores
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_score
