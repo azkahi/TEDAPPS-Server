@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  participant_type: MyString
+  favourite_session: MyText
+  favourite_speaker: MyText
+  favourite_moderator: MyText
+  new_cap: MyText
+  reason_new_cap: MyText
+  satisfaction: MyString
+  suggestion: MyText
+  next_session_suggestion: MyText
+
+two:
+  participant_type: MyString
+  favourite_session: MyText
+  favourite_speaker: MyText
+  favourite_moderator: MyText
+  new_cap: MyText
+  reason_new_cap: MyText
+  satisfaction: MyString
+  suggestion: MyText
+  next_session_suggestion: MyText
