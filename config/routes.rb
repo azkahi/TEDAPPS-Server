@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post 'start_quiz', to: 'scores#start_quiz'
   post 'end_quiz', to: 'scores#end_quiz'
   post 'show_score', to: 'scores#show_score'
-  post 'get_top', to: 'sessions#get_top'
+  post 'session_report', to: 'sessions#get_top'
+  get 'normalize', to: 'sessions#normalize_value'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

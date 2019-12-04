@@ -68,9 +68,22 @@ class SessionsController < ApplicationController
       end
     end
 
-
-
     render plain: top_sessions_csv.to_s
+  end
+
+  def normalize_value
+    @users = User.all
+
+    @users.each do |user|
+      @sessions = user.sessions
+
+      @sessions.each do |session|
+        puts session.key.to_i
+        if session.key.to_i > 5
+          session.destroy
+        end
+      end
+    end
   end
 
   # DELETE /sessions/1
