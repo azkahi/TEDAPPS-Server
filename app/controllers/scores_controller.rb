@@ -39,7 +39,7 @@ class ScoresController < ApplicationController
   end
 
   def start_quiz
-    @score = Score.new(score: 0, time: -1, score_type: params[:score_type], username: params[:username])
+    @score = Score.new(score: 0, time: -1, score_type: params[:score_type], username: params[:username], start_time: params[:time_start].to_datetime)
 
     if @score.save
       render json: @score, status: :created, location: @score
@@ -51,12 +51,14 @@ class ScoresController < ApplicationController
   def end_quiz
     @score = Score.find_by(username: params[:username], score_type: params[:score_type])
 
-    time_diff = Time.now - @score.created_at
+    if not @score.blank?
+      time_diff = ((params[:time_end].to_datetime - @score.start_time.to_datetime) * 24 * 60 * 60)
 
-    if @score.update(score: params[:score], time: time_diff)
-      render json: @score
-    else
-      render json: @score.errors, status: :unprocessable_entity
+      if @score.update(score: params[:score], time: time_diff)
+        render json: @score
+      else
+        render json: @score.errors, status: :unprocessable_entity
+      end
     end
   end
 
