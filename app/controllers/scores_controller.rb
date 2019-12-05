@@ -41,6 +41,9 @@ class ScoresController < ApplicationController
   def start_quiz
     @score = Score.new(score: 0, time: -1, score_type: params[:score_type], username: params[:username], start_time: params[:time_start].to_datetime)
 
+    puts "QIPW"
+    puts @score
+
     if @score.save
       render json: @score, status: :created, location: @score
     else
