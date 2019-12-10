@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   post 'end_quiz', to: 'scores#end_quiz'
   post 'show_score', to: 'scores#show_score'
   get 'session_report', to: 'sessions#get_top'
+  get 'session_report_detail', to: 'sessions#get_session_detail'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
