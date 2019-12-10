@@ -82,9 +82,7 @@ class SessionsController < ApplicationController
       attended_flags = [0,0,0,0,0,0,0,0,0,0,0]
 
       @sessions.each do |session|
-        puts 'test'
-        puts session.key
-        if Integer(session.key) >= 0 and Integer(session.key) <= 10
+        if session.key.to_i >= 0 and session.key.to_i <= 10
           attended_flags[session.key.to_i] = 1
         end
       end
